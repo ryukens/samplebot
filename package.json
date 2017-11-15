@@ -1,0 +1,19 @@
+{
+  "name": "samplebot",
+  "version": "1.0.0",
+  "description": "ChatBot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryukens/samplebot.git"
+  },
+  "author": "Juan Jose Morales",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryukens/samplebot/issues"
+  },
+  "homepage": "https://github.com/ryukens/samplebot#readme"
+}
