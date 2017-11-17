@@ -344,7 +344,7 @@ request.on('response', function(response) {
 				console.log('parameters: ', parameters);
 				switch(action){
 					case 'account.balance':
-						checkAccount(senderID, "balance");
+						checkAccount(senderID, "perro");
 					break;
 					case 'account.movement':
 						checkAccount(senderID, "movimiento");
