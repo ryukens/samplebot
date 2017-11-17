@@ -365,41 +365,50 @@ request.on('error', function(error) {
 request.end();
 }
 
-function checkAccount (senderID, message){
-	const value = encodeURI(message);
-	request({
-    uri: 'https://api.giphy.com/v1/gifs/search?api_key=dc6zatOxFJmzC&limit=50&rating=pg&q=' + value,
+function checkAccount(senderID, message) {
+  const value = encodeURI(message);
+  request({
+    uri: 'https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=50&rating=pg&q=' + value,
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var parsed = JSON.parse(body);
-	  var i = Math.floor(Math.random()*10);
-	  var meme = parsed.data[i];
-	  if (meme && meme.images && meme.images.fixed_width){
-		  var giphy = mem.images.fixed_width;
-		  var giphy = mem.images.fixed_width;
-		  request({
-			uri: 'https://graph.facebook.com/v2.6/me/messages',
-			qs: { access_token: PAGE_ACCESS_TOKEN },
-			method: 'POST',
-			json: {
-				recipient: {
-					id: senderID
-				},
-				message: {
-					attachment: {
-						type: 'image',
-						payload: {
-							url:giphy.url
-						}
-					}
-				}
-			}
-		}, function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-			}else{
-			}
-		});
-	  }
+      var i = Math.floor(Math.random() * 10);
+      var meme = parsed.data[i];
+      if (meme && meme.images && meme.images.fixed_width) {
+        var giphy = meme.images.fixed_width;
+        var giphy = meme.images.fixed_width;
+        request({
+              uri: 'https://graph.facebook.com/v2.6/me/messages',
+              qs: { access_token: PAGE_ACCESS_TOKEN },
+              method: 'POST',
+              json: {
+                recipient: {
+                  id: senderID
+                },
+                message: {
+                  attachment: {
+                    type: 'image',
+                    payload: {
+                      url: giphy.url
+                    }
+                  }
+                }
+              }
+
+            }, function (error, response, body) {
+              if (!error && response.statusCode == 200) {
+                var result = body.result;
+
+                if (result) {
+                  console.log(result);
+                } else {
+                  console.log(result);
+                }
+              } else {
+                console.error("Failed sending giphy", response.statusCode, response.statusMessage, body.error);
+              }
+            });
+      }
     } else {
       console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
     }
