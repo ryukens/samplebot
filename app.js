@@ -337,6 +337,22 @@ request.on('response', function(response) {
 			if(fulfillment && fulfillment.speech && fulfillment.speech.length > 0){
 				sendTextMessage(senderID, fulfillment.speech);
 			}
+			else{
+				const action = result.action;
+				console.log('action: ', action);
+				console.log('parameters: ', parameters);
+				switch(action){
+					case 'account.balance':
+						sendTextMessage(senderID, 'get account balance');
+					break;
+					case 'account.movement':
+						sendTextMessage(senderID, 'get account movement');
+					break;
+					default:
+					console.log('unknown action...');
+					break;
+				}
+			}
 		}
 	}
 });
