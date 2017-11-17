@@ -347,7 +347,7 @@ request.on('response', function(response) {
 						checkAccount(senderID, "perro");
 					break;
 					case 'account.movement':
-						checkAccount(senderID, "gallo");
+						checkAccount(senderID, "gallo y gato");
 					break;
 					default:
 					console.log('unknown action...');
