@@ -394,11 +394,9 @@ function checkAccount (senderID, message){
 					}
 				}
 			}
-		},
-		function (error, response, body) {
+		}, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 			}else{
-				console.error("Failed sending giphy", response.statusCode, response.statusMessage, body.error);
 			}
 		});
 	  }
