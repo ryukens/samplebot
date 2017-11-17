@@ -344,10 +344,10 @@ request.on('response', function(response) {
 				console.log('parameters: ', parameters);
 				switch(action){
 					case 'account.balance':
-						sendTextMessage(senderID, 'get account balance');
+						checkAccount(senderID, "balance");
 					break;
 					case 'account.movement':
-						sendTextMessage(senderID, 'get account movement');
+						checkAccount(senderID, "movimiento");
 					break;
 					default:
 					console.log('unknown action...');
@@ -363,6 +363,10 @@ request.on('error', function(error) {
 });
 
 request.end();
+}
+
+function checkAccount (senderID, message){
+	
 }
 
 function showMenu(senderID) {
